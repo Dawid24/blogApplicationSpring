@@ -2,16 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Posts</title>
+    <title>Mini blog</title>
 </head>
 <body>
-<h1>Moje posty</h1>
-<ul>
-    <li th:each="post : ${posts}">
-        <span th:text="${post.title}"></span>
 
-    </li>
-</ul>
+<h1>Moje posty</h1>
+<div th:each="post : ${posts}">
+    <h2 th:text="${post.title}"></h2>
+    <div th:text="${post.content}"></div>
+    <div th:each="comment : ${post.comments}">
+        <div th:text="${#dates.format(comment.added, 'yyyyMMdd hh:mm:ss')}"></div>
+        <div th:text="${comment.comment}"></div>
+    </div>
+</div>
 
 </body>
 </html>
