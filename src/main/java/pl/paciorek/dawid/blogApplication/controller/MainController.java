@@ -38,6 +38,7 @@ public class MainController {
         Post post = new Post(title, content);
         PostComment postComment = new PostComment();
         postComment.setComment(title);
+        post.addComment(postComment);
         postRepository.save(post);
         return "index";
     }
